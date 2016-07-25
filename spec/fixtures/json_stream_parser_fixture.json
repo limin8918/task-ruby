@@ -1,0 +1,23 @@
+{
+  "depth2-1":{
+    "depth3-1":"world"
+  },
+  "depth2-2":{
+    "depth3-2":"123",
+    "depth3-3":{
+      "depth4-1":{},
+      "depth4-2":{
+        "depth5":4
+      },
+      "depth4-3":{}
+    }
+  },
+  "depth2-3":[
+    {
+      "depth3-4":"555"
+    },
+    {
+      "depth3-5":"Hello"
+    }
+  ]
+}
