@@ -1,4 +1,3 @@
-require 'time'
 require_relative '../lib/template/service_provider'
 
 Dir[File.join(File.dirname(__FILE__), '**/*.rb')].each { |file| require file }

@@ -10,7 +10,7 @@ module Template
     context 'test request is successful' do
       let(:test_response) { OpenStruct.new(body: read_fixture('service_provider.json'), code: 200)}
       before do
-        allow(subject.class).to receive(:get).with('/test', {:timeout=>5, :headers=>{"Accept"=>"application/json"}}).and_return(test_response)
+        allow(subject.class).to receive(:get).with('/index', {:timeout=>5, :headers=>{"Accept"=>"application/json"}}).and_return(test_response)
       end
 
       it 'returns only active market based contract products' do
@@ -22,7 +22,7 @@ module Template
     end
 
     context 'test request fails' do
-      before { allow(ServiceProvider).to receive(:get).with('/test', {:timeout=>5, :headers=>{"Accept"=>"application/json"}}).and_raise('this-does-not-exist') }
+      before { allow(ServiceProvider).to receive(:get).with('/index', {:timeout=>5, :headers=>{"Accept"=>"application/json"}}).and_raise('this-does-not-exist') }
 
       subject { lambda { ServiceProvider.new.run } }
 
@@ -32,7 +32,7 @@ module Template
     context 'test request results in an unexpected response code' do
       let(:test_response) {OpenStruct.new(body: '', :code => 201)}
 
-      before { allow(ServiceProvider).to receive(:get).with('/test', {:timeout=>5, :headers=>{"Accept"=>"application/json"}}).and_return(test_response) }
+      before { allow(ServiceProvider).to receive(:get).with('/index', {:timeout=>5, :headers=>{"Accept"=>"application/json"}}).and_return(test_response) }
 
       subject { lambda { ServiceProvider.new.run } }
       it { should raise_error(ServiceProvider::UnexpectedResponse) }
@@ -42,7 +42,7 @@ module Template
     context 'test request results in a successful response code, but an empty body' do
       let(:test_response) {OpenStruct.new(body: '', :code => 200)}
 
-      before { allow(ServiceProvider).to receive(:get).with('/test', {:timeout=>5, :headers=>{"Accept"=>"application/json"}}).and_return(test_response) }
+      before { allow(ServiceProvider).to receive(:get).with('/index', {:timeout=>5, :headers=>{"Accept"=>"application/json"}}).and_return(test_response) }
 
       subject { lambda { ServiceProvider.new.run } }
       it { should raise_error(ServiceProvider::InvalidJSON)}
@@ -52,7 +52,7 @@ module Template
       let(:test_response) {OpenStruct.new(body: 'ss{fd[', :code => 200)}
 
       before {
-        allow(ServiceProvider).to receive(:get).with('/test', {:timeout=>5, :headers=>{"Accept"=>"application/json"}}).and_return(test_response)
+        allow(ServiceProvider).to receive(:get).with('/index', {:timeout=>5, :headers=>{"Accept"=>"application/json"}}).and_return(test_response)
         allow_any_instance_of(JsonStreamParser).to receive(:parse_json_file_at_depth).and_raise("I hate your input")
       }
 

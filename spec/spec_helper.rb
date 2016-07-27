@@ -1,4 +1,3 @@
-require 'yarjuf'
 require 'simplecov'
 require 'simplecov-bamboo'
 SimpleCov.minimum_coverage 100

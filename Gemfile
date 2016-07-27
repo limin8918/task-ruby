@@ -12,9 +12,5 @@ group :development, :test do
   gem 'simplecov', '~> 0.7.1', require: false
   gem 'simplecov-bamboo', :require => false
   gem 'pry'
-  gem 'timecop'
-  gem 'pact'
-  gem 'pact_broker-client'
-  gem 'pact-provider-proxy'
 end
 
