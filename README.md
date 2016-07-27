@@ -1,6 +1,13 @@
 # Rake task
 
-## Overview
-*Build tools: Rake
-*Language: Ruby
-*Test: Rspec
+## Tech Stacks
+> Build tools: Rake
+
+> Language: Ruby
+
+> Test: Rspec
+
+## Run task
+> bundle install
+
+> bundle exec rake run
